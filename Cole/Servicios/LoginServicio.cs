@@ -17,7 +17,7 @@ namespace Cole.Servicios
             var dniAdministrador = db.Database.SqlQuery<int>(
                 "Select DniAdministrador " +
                 "From Institucion " +
-                "Where Id=1"
+                "Where Id=0"
                 ).First();
 
             if (dniAdministrador == dni)

@@ -31,34 +31,36 @@
 <body>
     
 
-    <div class="demo-layout mdl-layout mdl-js-layout  mdl-layout--fixed-header">
-        <header class="demo-header mdl-layout__header mdl-color--primary mdl-color-text--white">
+    <div class="demo-layout mdl-layout mdl-js-layout  mdl-layout--fixed-header" >
+        <header class="demo-header mdl-layout__header mdl-color--primary mdl-color-text--white" style="padding: 0 1rem">
             <div class="mdl-layout__header-row">
                 <div style="background-color:white; border-radius:50%; width:35px"><img src="~/Content/LogoTransparente.png" width="30" style="margin-left:3px" /></div>
                 
-                <span class="mdl-layout-title">Colegio San Agustín</span>
+                <span class="mdl-layout-title" style="margin:0 1rem">Colegio San Agustín</span>
                 <div class="mdl-layout-spacer"></div>
             </div>
         </header>
 
-        <main class="mdl-layout__content">
+        <main class="mdl-layout__content" style="display: flex">
 
             <div id="fb-root"></div>
             <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.3"></script>
 
 
-            <div class="tab" style="width:22%;float:right;height:100%">
-                <div class="fb-page" data-href="https://www.facebook.com/pg/Escuela-Cat%C3%B3lica-San-Agustin-Cnel-Du-Graty-1558358637566990/posts/" data-tabs="timeline" data-width="400" data-height="668" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/pg/Escuela-Cat%C3%B3lica-San-Agustin-Cnel-Du-Graty-1558358637566990/posts/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/pg/Escuela-Cat%C3%B3lica-San-Agustin-Cnel-Du-Graty-1558358637566990/posts/">Escuela Católica &quot;San Agustin&quot; - Cnel Du Graty</a></blockquote></div>
+
+
+
+            @RenderBody()
+
+            <div class="tab" style="width:400px;float:right;height:100%">
+                <div class="fb-page" data-href="https://www.facebook.com/pg/Escuela-Cat%C3%B3lica-San-Agustin-Cnel-Du-Graty-1558358637566990/posts/" data-tabs="timeline" data-width="400" data-height="2000" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/pg/Escuela-Cat%C3%B3lica-San-Agustin-Cnel-Du-Graty-1558358637566990/posts/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/pg/Escuela-Cat%C3%B3lica-San-Agustin-Cnel-Du-Graty-1558358637566990/posts/">Escuela Católica &quot;San Agustin&quot; - Cnel Du Graty</a></blockquote></div>
             </div>
 
-            <div class="mdl-grid demo-content">
-                @RenderBody()
 
-            </div>
         </main>
-        <footer class="mdl-mini-footer">
+        <footer class="mdl-mini-footer" style="max-height: 100px; padding: 0 1rem">
             <div class="mdl-mini-footer__left-section">
-                <div class="mdl-logo">Colegio San Agustín</div>
+                <div class="mdl-logo" style="margin: 0">Colegio San Agustín</div>
                 <ul class="mdl-mini-footer__link-list">
                     <li>
                         <a href="https://es-la.facebook.com/Escuela-Cat%C3%B3lica-San-Agustin-Cnel-Du-Graty-1558358637566990/posts"><img src="~/Content/facebook.png" width="14" style="-webkit-filter:invert(%100);filter: invert(100%)" /></a>

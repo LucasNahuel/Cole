@@ -315,8 +315,8 @@
                 <a class="mdl-navigation__link" href=""><i class="mdl-color-text--white material-icons" role="presentation">exit_to_app</i>Salir</a>
             </nav>
         </div>
-        <main class="mdl-layout__content mdl-color--grey-100">
-            <div class="mdl-grid demo-content">
+        <main class="mdl-layout__content mdl-color--grey-100" style="overflow-x:scroll">
+            <div class="demo-content" >
                 @RenderBody()
 
             </div>
@@ -380,5 +380,17 @@
     </script>
 
     @RenderSection("scripts", required: false)
+
+    <style>
+        @@media (max-width: 500px) {
+        form {
+            display: flex;
+        }
+
+        .search-box{
+            display: block;
+        }
+    }
+    </style>
 </body>
 </html>

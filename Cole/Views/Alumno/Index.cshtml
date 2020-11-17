@@ -4,15 +4,16 @@
     Layout = "~/Views/Administrador/_LayoutAdministrador.cshtml";
     ViewBag.Title = "Alumnos";
 }
-<div class="mdl-grid">
 
 
-    <h2 class="mdl-cell--12-col">Listado de alumnos</h2>
-    <div class="mdl-cell--12-col" style="display:contents">
 
-        <form method="post" action="Index" class="mdl-cell--10-col">
+<h2>Listado de alumnos</h2>
+<div style="width:100%" class="search-box">
 
-            <div class="mdc-select">
+    <form method="post" action="Index" style=" margin: 0 auto; background-color:white" class="mdl-shadow--2dp">
+
+        <div style="width: 50%; display:flex; margin: 0 auto; justify-content: center">
+            <div class="mdc-select" style="width: 120px; margin: 0 auto; background-color: white">
                 <i class="mdc-select__dropdown-icon"></i>
                 <select id="campo" class="mdc-select__native-control" style="height:45px" name="campo">
                     <option value="dni">dni</option>
@@ -21,9 +22,11 @@
                 <label for="SearchBy" class="mdc-floating-label">Buscar por</label>
                 <div class="mdc-line-ripple"></div>
             </div>
+        </div>
 
 
-            <div class="mdl-textfield mdl-js-textfield" style="width:150px">
+        <div style="width: 50%;display: flex;margin: 0 auto;justify-content: center">
+            <div class="mdl-textfield mdl-js-textfield" style="min-width: 120px">
                 <input class="mdl-textfield__input text-box single-line" id="valor" name="valor" type="number">
                 <label class="mdl-textfield__label">
                 </label>
@@ -34,117 +37,143 @@
 
                 var valor = document.getElementById("valor");
 
-                dropdown.onchange= function(){
-                    if(dropdown.value=="dni"){
-                    valor.type="number";
-                    }else{
-                    valor.type="text";
+                dropdown.onchange = function () {
+                    if (dropdown.value == "dni") {
+                        valor.type = "number";
+                    } else {
+                        valor.type = "text";
                     }
                 }
             </script>
 
 
-            <button class="mdl-button mdl-js-button mdl-button--icon" type="submit" value="Submit">
+            <button class="mdl-button mdl-js-button mdl-button--icon" type="submit" value="Submit" style="margin: auto 1rem">
                 <i class="material-icons">search</i>
-            </button>
-
-        </form>
-        <div class="mdl-cell--2-col">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin-top:12px">
-
-                @Html.ActionLink("Crear nuevo", "Create", htmlAttributes: new { @Style = "text-decoration: none; color:white; margin-left:0px" }, routeValues: null)
             </button>
         </div>
 
 
+
+
+
+    </form>
+    <div style="width: 100%; display:block">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin: 1rem auto; float: right">
+
+            @Html.ActionLink("Crear nuevo", "Create", htmlAttributes: new { @Style = "text-decoration: none; color:white; margin-left:0px" }, routeValues: null)
+        </button>
     </div>
-    <br />
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--12-col">
-        <thead>
-            <tr>
-                <th>
-                    D.N.I.
-                </th>
 
-                <th>
-                    Nombre
-                </th>
-
-                <th>
-                    Apellido
-                </th>
-
-                <th>
-                    Teléfono celular
-                </th>
-
-                <th>
-                    Domicilio
-                </th>
-
-                <th></th>
-            </tr>
-        </thead>
-
-
-        <tbody>
-            @if (Model.Count() == 0)
-            {
-                <tr>
-                    <td colspan="8" style="color:red;text-align:center">No se han encontrado coincidencias</td>
-                </tr>
-            }
-            else
-            {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Dni)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Persona.Nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Persona.Apellido)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Persona.TelCelular)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Persona.Domicilio)
-                        </td>
-
-                        <td>
-                            <button style="float:right; color:red" class="mdl-button mdl-js-button" type="button" id="eliminar @item.Dni" onclick="location.href='@Url.Action("Delete", "Alumno", new { id = item.Dni })';return false;">
-                                <i class="material-icons mdc-button__icon" aria-hidden="true">delete</i>
-                                <div class="mdl-tooltip" for="eliminar @item.Dni">
-                                    Eliminar
-                                </div>
-                            </button>
-
-                            <button style="float:right" class="mdl-button mdl-js-button" type="button" id="editar @item.Dni" onclick="location.href='@Url.Action("Edit", "Alumno", new { id = item.Dni })';return false;">
-                                <i class="material-icons mdc-button__icon" aria-hidden="true">edit</i>
-                                <div class="mdl-tooltip" for="editar @item.Dni">
-                                    Editar
-                                </div>
-                            </button>
-
-                            <button style="float:right" class="mdl-button mdl-js-button" type="button" id="detalles @item.Dni" onclick="location.href='@Url.Action("Details", "Alumno", new { id = item.Dni })';return false;">
-                                <i class="material-icons mdc-button__icon" aria-hidden="true">search</i>
-                                <div class="mdl-tooltip" for="detalles @item.Dni">
-                                    Detalles
-                                </div>
-                            </button>
-
-
-
-                        </td>
-                    </tr>
-                }
-            }
-        </tbody>
-    </table>
 
 </div>
+<br />
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin: 1rem auto; width:100%">
+    <thead>
+        <tr>
+            <th>
+                D.N.I.
+            </th>
+
+            <th>
+                Nombre
+            </th>
+
+            <th>
+                Apellido
+            </th>
+
+            <th>
+                Teléfono celular
+            </th>
+
+            <th>
+                Domicilio
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="8" style="color:red;text-align:center">No se han encontrado coincidencias</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dni)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Persona.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Persona.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Persona.TelCelular)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Persona.Domicilio)
+                    </td>
+
+                    <td>
+                        <button style="float: right; color: red" class="mdl-button mdl-js-button" type="button" id="eliminar @item.Dni" onclick="location.href='@Url.Action("Delete", "Alumno", new { id = item.Dni })';return false;">
+                            <i class="material-icons mdc-button__icon" aria-hidden="true">delete</i>
+                            <div class="mdl-tooltip" for="eliminar @item.Dni">
+                                Eliminar
+                            </div>
+                        </button>
+
+                        <button style="float:right" class="mdl-button mdl-js-button" type="button" id="editar @item.Dni" onclick="location.href='@Url.Action("Edit", "Alumno", new { id = item.Dni })';return false;">
+                            <i class="material-icons mdc-button__icon" aria-hidden="true">edit</i>
+                            <div class="mdl-tooltip" for="editar @item.Dni">
+                                Editar
+                            </div>
+                        </button>
+
+                        <button style="float:right" class="mdl-button mdl-js-button" type="button" id="detalles @item.Dni" onclick="location.href='@Url.Action("Details", "Alumno", new { id = item.Dni })';return false;">
+                            <i class="material-icons mdc-button__icon" aria-hidden="true">search</i>
+                            <div class="mdl-tooltip" for="detalles @item.Dni">
+                                Detalles
+                            </div>
+                        </button>
+
+
+
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<style>
+    h2 {
+        margin: 1rem;
+        display: flex;
+    }
+
+    @@media (min-width : 650px){
+        form{
+            display:flex;
+            width:100%;
+        }
+
+        .search-box{
+            display:flex;
+        }
+    }
+
+</style>
+
+
+
+
